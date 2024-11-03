@@ -1,0 +1,63 @@
+<main class="flex w-screen h-screen p-8 font-primary antialiased">
+    <section class="flex justify-center items-center w-1/2 text-gray-900">
+        <div class="w-96">
+            <h1 class="font-semibold tracking-tight text-3xl">Seja Bem-Vindo(a) 👋</h1>
+            <p class="text-base font-light tracking-tight mt-7">Hoje é um novo dia. É o seu dia. Você molda isso. <br>Faça login para começar a gerenciar seus projetos.</p>
+            
+            <form class="flex flex-col mt-12" [formGroup]="formLogin" (ngSubmit)="login()">
+                <label class="text-start text-sm font-light tracking-wide">Email</label>
+                <div class="relative">
+                    <input 
+                        class="text-sm font-light tracking-wide border border-primary py-2 px-3 w-full rounded-md mt-2 transition-colors cursor-pointer placeholder:text-placeholder
+                        hover:border-gray-500 focus:outline-none focus:ring focus:ring-active pr-10" 
+                        type="email"
+                        name="email"
+                        formControlName="email"
+                        placeholder="example@email.com"
+                    >
+                    <i class="fa-regular fa-envelope absolute right-3 bottom-2.5 pointer-events-none"></i>
+                </div>
+
+                @if ((formLogin.get('email')?.hasError('required')) && (submitForm)) {
+                    <span class="font-medium text-xs text-red-500 pl-3 mt-1">O campo email é obrigatório. *</span>
+
+                } @else if ((formLogin.get('email')?.hasError('email')) && (submitForm)) {
+                    <span class="font-medium text-xs text-red-500 pl-3 mt-1">Por favor, informe um email válido.</span>
+                }
+
+                <label class="text-start text-sm font-light tracking-wide mt-6">Senha</label>
+                <div class="relative text-center">
+                    <input
+                        class="text-sm font-light tracking-wide border border-primary py-2 px-3 w-full rounded-md mt-2 transition-colors cursor-pointer placeholder:text-placeholder
+                        hover:border-gray-500 focus:outline-none focus:ring focus:ring-active"
+                        type="{{ showPassword ? 'text' : 'password' }}"
+                        name="password"
+                        formControlName="password"
+                        placeholder="Pelo menos 8 caracteres"
+                    >
+                    <i  class="absolute right-3 bottom-2.5 cursor-pointer"
+                        (click)="togglePasswordVisibility()"
+                        [ngClass]="showPassword ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye'">
+                    </i>
+                </div>
+
+                @if ((formLogin.get('password')?.hasError('required')) && (submitForm)) {
+                    <span class="font-medium text-xs text-red-500 pl-3 mt-1">O campo senha é obrigatório. *</span>
+
+                } @else if ((formLogin.controls['password'].errors) && (submitForm)) {
+                    <span class="font-medium text-xs text-red-500 pl-3 mt-1">A senha deve conter entre 8 e 30 caracteres.</span>
+                }
+
+                <button 
+                    type="submit"
+                    class="text-center py-2 mt-12 rounded-md text-base font-medium text-white bg-primary">
+                    Acessar
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <section class="w-1/2">
+        <img class="w-full h-full rounded-3xl" src="assets/login_illustration.png">
+    </section>
+</main>

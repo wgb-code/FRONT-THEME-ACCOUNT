@@ -1,8 +1,8 @@
 <main class="flex w-screen h-screen p-8 font-primary antialiased">
     <section class="flex justify-center items-center w-1/2 text-gray-900">
         <div class="w-96">
-            <h1 class="font-bold tracking-tight text-3xl">Seja Bem-Vindo(a) 👋</h1>
-            <p class="text-base font-light tracking-tight leading-6 mt-7">Hoje é um novo dia. É o seu dia. Você molda isso. <br>Faça login para começar a gerenciar seus projetos.</p>
+            <h1 class="font-bold tracking-tight text-3xl" i18n>Seja Bem-Vindo(a) 👋</h1>
+            <p class="text-base font-light tracking-tight leading-6 mt-7" i18n>Hoje é um novo dia. É o seu dia. Você molda isso. <br>Faça login para começar a gerenciar seus projetos.</p>
             
             <form class="flex flex-col mt-12" [formGroup]="formLogin" (ngSubmit)="login()">
                 <label class="text-start text-sm font-light tracking-wide">Email</label>
@@ -19,13 +19,13 @@
                 </div>
 
                 @if ((formLogin.get('email')?.hasError('required')) && (submitForm)) {
-                    <span class="font-medium text-xs text-red-500 pl-3 mt-1">O campo email é obrigatório. *</span>
+                    <span class="font-medium text-xs text-red-500 pl-3 mt-1" i18n>O campo email é obrigatório. *</span>
 
                 } @else if ((formLogin.get('email')?.hasError('email')) && (submitForm)) {
-                    <span class="font-medium text-xs text-red-500 pl-3 mt-1">Por favor, informe um email válido.</span>
+                    <span class="font-medium text-xs text-red-500 pl-3 mt-1" i18n>Por favor, informe um email válido.</span>
                 }
 
-                <label class="text-start text-sm font-light tracking-wide mt-6">Senha</label>
+                <label class="text-start text-sm font-light tracking-wide mt-6" i18n>Senha</label>
                 <div class="relative text-center">
                     <input
                         class="text-sm font-light tracking-wide border border-primary py-2 px-3 w-full rounded-md mt-2 transition-colors cursor-pointer placeholder:text-placeholder
@@ -33,6 +33,7 @@
                         type="{{ showPassword ? 'text' : 'password' }}"
                         name="password"
                         formControlName="password"
+                        i18n-placeholder
                         placeholder="Pelo menos 8 caracteres"
                     >
                     <i  class="absolute right-3 bottom-2.5 cursor-pointer"
@@ -42,10 +43,10 @@
                 </div>
 
                 @if ((formLogin.get('password')?.hasError('required')) && (submitForm)) {
-                    <span class="font-medium text-xs text-red-500 pl-3 mt-1">O campo senha é obrigatório. *</span>
+                    <span class="font-medium text-xs text-red-500 pl-3 mt-1" i18n>O campo senha é obrigatório. *</span>
 
                 } @else if ((formLogin.controls['password'].errors) && (submitForm)) {
-                    <span class="font-medium text-xs text-red-500 pl-3 mt-1">A senha deve conter entre 8 e 30 caracteres.</span>
+                    <span class="font-medium text-xs text-red-500 pl-3 mt-1" i18n>A senha deve conter entre 8 e 30 caracteres.</span>
                 }
 
                 <button
@@ -54,10 +55,10 @@
                     [disabled]="loadData"
                 >
                     @if (!loadData) {
-                        <p class="font-medium text-sm tracking-wider">Acessar</p>
+                        <p class="font-medium text-sm tracking-wider" i18n>Acessar</p>
                         <i class="fa-solid fa-arrow-right-to-bracket"></i>
                     } @else {
-                        <p class="font-medium text-sm text-gray-100 tracking-wider">Verificando dados, quase lá!</p>
+                        <p class="font-medium text-sm text-gray-100 tracking-wider" i18n>Verificando dados, quase lá!</p>
                         <i class="fa-solid fa-spinner fa-spin"></i>
                     }
                 </button>

@@ -1,9 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { EnterpriseService } from '../../services/enterprise.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+
+import { EnterpriseService } from '../../services/enterprise.service';
+import { StorageService } from '../../services/storage.service'
+
 import { Login } from '../../interfaces/login';
 import { Destach } from '../../models/destach-type.type'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'Login',
@@ -19,6 +23,8 @@ export class LoginComponent{
 
   private EnterpriseServices = inject(EnterpriseService)
   private FormBuilderService = inject(FormBuilder)
+  private LocalStorage       = inject(StorageService)
+  private Router             = inject(Router)
 
   protected formLogin = this.FormBuilderService.group({
     email: ['', [Validators.required, Validators.email]],
@@ -49,6 +55,15 @@ export class LoginComponent{
           next: (data) => {
             this.loadData = false
             this.destach  = 'NO' 
+
+            let accountInfo = [
+              data.message.enterprise.id,
+              data.message.enterprise.name
+            ]
+
+            this.LocalStorage.setItem('ENTERPRISE', accountInfo)
+
+            this.Router.navigate(['home'])
           },
           error: (error) => {
             this.loadData = false

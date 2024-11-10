@@ -1,0 +1,1 @@
+export type Destach = 'EMAIL' | 'PASSWORD' | 'EMAIL_PASSWORD' | 'NO'

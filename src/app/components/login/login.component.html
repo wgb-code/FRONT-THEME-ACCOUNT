@@ -7,7 +7,8 @@
             <form class="flex flex-col mt-12" [formGroup]="formLogin" (ngSubmit)="login()">
                 <label class="text-start text-sm font-light tracking-wide">Email</label>
                 <div class="relative">
-                    <input 
+                    <input
+                        [ngClass]="{'invalid: border-red-600' : destach === 'EMAIL' || destach === 'EMAIL_PASSWORD'}"
                         class="text-sm font-light tracking-wide border border-primary py-2 px-3 w-full rounded-md mt-2 transition-colors cursor-pointer placeholder:text-placeholder
                         hover:border-gray-500 focus:outline-none focus:ring focus:ring-active pr-10" 
                         type="email"
@@ -28,6 +29,7 @@
                 <label class="text-start text-sm font-light tracking-wide mt-6" i18n>Senha</label>
                 <div class="relative text-center">
                     <input
+                        [ngClass]="{'invalid: border-red-600' : destach === 'PASSWORD' || destach === 'EMAIL_PASSWORD'}"
                         class="text-sm font-light tracking-wide border border-primary py-2 px-3 w-full rounded-md mt-2 transition-colors cursor-pointer placeholder:text-placeholder
                         hover:border-gray-500 focus:outline-none focus:ring focus:ring-active"
                         type="{{ showPassword ? 'text' : 'password' }}"
@@ -49,9 +51,13 @@
                     <span class="font-medium text-xs text-red-500 pl-3 mt-1" i18n>A senha deve conter entre 8 e 30 caracteres.</span>
                 }
 
+                @if (errorMessage !== '') {
+                    <p class="font-medium text-xs text-red-500 text-left mt-1">{{errorMessage}}</p>
+                }
+
                 <button
                     type="submit"
-                    class="flex items-center justify-center gap-3 py-2 mt-12 rounded-md text-white bg-primary"
+                    class="flex items-center justify-center gap-3 py-2 mt-20 rounded-md text-white bg-primary"
                     [disabled]="loadData"
                 >
                     @if (!loadData) {

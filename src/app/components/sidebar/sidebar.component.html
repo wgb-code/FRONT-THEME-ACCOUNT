@@ -1,1 +1,44 @@
-<p>sidebar works!</p>
+<aside class="flex flex-col justify-between w-72 h-full border-r border-gray-200 py-6 px-5">
+    <div>
+        <h1 class="text-xl font-semibold">Logo.<span class="text-blue-700">ME</span></h1>
+
+        <ul class="flex flex-col text-base mt-4">
+            <li class="sidebar-menu-item">
+                <i class="fa-solid fa-house"></i>
+                <p i18n>Home</p>
+            </li>
+    
+            <li class="sidebar-menu-item">
+                <i class="fa-solid fa-chart-line"></i>
+                <p i18n>Dashboard</p>
+            </li>
+    
+            <li class="sidebar-menu-item">
+                <i class="fa-solid fa-list"></i>
+                <p i18n>Projetos</p>
+            </li>
+    
+            <li class="sidebar-menu-item">
+                <i class="fa-solid fa-headset"></i>
+                <p i18n>Suporte</p>
+            </li>
+    
+            <li class="sidebar-menu-item">
+                <i class="fa-solid fa-gear"></i>
+                <p i18n>Configurações</p>
+            </li>
+        </ul>
+    </div>
+
+    <article class="flex flex-col mt-4 p-4 rounded-xl bg-gray-100 text-base">
+        <h2 class="font-semibold" i18n>Siga-me no LinkedIn!</h2>
+        <p class="text-sm mt-1" i18n>Será um prazer conversar com você. Estou sempre disposto a aprender e ajudar.</p>
+
+        <img class="rounded-md mt-4" ngSrc="/assets/will_developer.jpeg" alt="Foto de Willian Gabriel, Desenvolvedor Web" width="389" height="389">
+
+        <button class="flex items-center gap-2 mt-4">
+            <i class="fa-brands fa-linkedin"></i>
+            <a href="https://www.linkedin.com/in/wgb-developer/" target="_blank">wgb-developer</a>
+        </button>
+    </article>
+</aside>

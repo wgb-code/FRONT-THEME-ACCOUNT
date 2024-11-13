@@ -14,7 +14,8 @@ module.exports = {
         'primary': '#162D3A'
       },
       fontFamily: {
-        'primary': ['OpenSans', 'sans-serif']
+        'primary': ['OpenSans', 'sans-serif'],
+        'secondary': ['Inter', 'sans-serif']
       },
       borderColor: {
         'primary': '#E2E2E2'

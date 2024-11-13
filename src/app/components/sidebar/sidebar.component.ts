@@ -1,9 +1,10 @@
+import { NgOptimizedImage } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-sidebar',
+  selector: 'Sidebar',
   standalone: true,
-  imports: [],
+  imports: [NgOptimizedImage],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
